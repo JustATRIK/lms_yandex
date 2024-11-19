@@ -1,0 +1,2 @@
+def sorting():
+    data.sort()

@@ -1,7 +1,7 @@
 def placeholder(*lines, **holders):
     d = {}
     for line in lines:
-        line1 = line.replace('.', '').replace('!', '').replace(',', '').replace('?', '')
+        line1 = line.replace('.', '').replace('!', '').replace(',', ' ').replace('?', '')
         line1 = line1.split()
         for holder in holders.values():
             holder1 = holder.split()
@@ -15,6 +15,5 @@ def placeholder(*lines, **holders):
                 holder1[i] = holder1[i].replace('_', line1[i])
             if ' '.join(holder1) == line:
                 d.setdefault(holder, []).append(line)
-    for k, v in zip(d.keys(), d.values()):
-        d[k] = sorted(v)
     return d
+ 

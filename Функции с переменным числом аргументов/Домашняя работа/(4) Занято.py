@@ -14,5 +14,3 @@ def sequence_occupied(**data):
             if maxx < curr:
                 maxx, a = curr, places.index(i) + 1
     return maxx, a
-
-# places = []

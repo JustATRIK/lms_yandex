@@ -4,5 +4,3 @@ def dried_apricots(data):
             apricots[i] = 0
         else:
             apricots[i] = max(apricots[i], data[i])
-
-# apricots = []
