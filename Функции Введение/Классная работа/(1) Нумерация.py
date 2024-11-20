@@ -1,2 +1,2 @@
 def numbering():
-    print(f'Комната № {input()}')
+    print(f'РљРѕРјРЅР°С‚Р° в„– {input()}')

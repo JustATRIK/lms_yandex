@@ -4,8 +4,8 @@ protiv = 0
 
 def voting(d):
     global za, protiv
-    if d == "за":
+    if d == "Р·Р°":
         za += 1
     else:
         protiv += 1
-    print(f"за: {za}\nпротив: {protiv}\n")
+    print(f"Р·Р°: {za}\nРїСЂРѕС‚РёРІ: {protiv}\n")

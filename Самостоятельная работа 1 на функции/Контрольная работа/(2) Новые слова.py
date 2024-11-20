@@ -1,4 +1,4 @@
-a = "ΰÿξΈσώύεθϋ"
+a = "Π°ΡΠΎΡ‘ΡƒΡΡΠµΠΈΡ‹"
 
 
 def vowels_in_words(words):

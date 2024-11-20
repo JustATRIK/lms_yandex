@@ -1,11 +1,11 @@
 import os
 from pathlib import Path
-
+import dotenv
 import requests
 import json
 
 IGNORE_LESSONS = [5217]
-BASE_PATH = Path("C:/Users/Cybermart/PycharmProjects/yandex_lms")
+BASE_PATH = Path("./")
 LESSON_NAME_BY_TYPE = {
     "classwork": "Классная работа",
     "homework": "Домашняя работа",
@@ -22,7 +22,7 @@ solution_url = f"https://lms.yandex.ru/api/student/solutions/solution_id/comment
 
 def validate_response(response, exit_on_fail=False):
     if response.status_code != 200:
-        print("Error! Status code", response)
+        print("Error! Status code", response.status_code)
         print(response.text)
         if exit_on_fail:
             exit()
@@ -42,9 +42,10 @@ def get_solution_url(solution_id):
     return solution_url.replace("solution_id", str(solution_id))
 
 
+dotenv.load_dotenv()
 session = requests.Session()
 session.cookies.set('Session_id',
-                    'change_me')
+                    os.getenv("session_id"))
 session.headers = {"accept": "application/json", "content-type": "application/json",
                    "accept-encoding": "gzip, deflate, br, zstd"}
 
@@ -82,7 +83,7 @@ for group_lesson in json.loads(group_lessons_response.text):
                 solution_save_path.parent.mkdir(exist_ok=True, parents=True)
                 os.remove(solution_save_path)
 
-                with open(solution_save_path, "a") as file:
+                with open(solution_save_path, "a", encoding="utf-8") as file:
                     file.write(file_data.text)
                     file.flush()
                 print(f"Saved ({task_id}/{len(lesson_type['tasks'])}):", solution_save_path)

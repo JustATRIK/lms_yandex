@@ -4,16 +4,16 @@ b = set()
 
 def pupil_number(surname):
     global log
-    print(log.index(surname) + 1 if surname in log else "Такого ученика нет.")
+    print(log.index(surname) + 1 if surname in log else "РўР°РєРѕРіРѕ СѓС‡РµРЅРёРєР° РЅРµС‚.")
 
 
 def add_pupil(surname):
     global log
     if surname not in log:
         log.append(surname)
-        print(f"Ученик {surname} добавлен.")
+        print(f"РЈС‡РµРЅРёРє {surname} РґРѕР±Р°РІР»РµРЅ.")
     else:
-        print("Такой ученик уже есть в журнале.")
+        print("РўР°РєРѕР№ СѓС‡РµРЅРёРє СѓР¶Рµ РµСЃС‚СЊ РІ Р¶СѓСЂРЅР°Р»Рµ.")
     log.sort()
 
 
@@ -21,7 +21,7 @@ def to_the_blackboard(n):
     global log, b
     n -= 1
     if log[n] in b:
-        print("Сан Саныч, Вы меня уже вызывали!")
+        print("РЎР°РЅ РЎР°РЅС‹С‡, Р’С‹ РјРµРЅСЏ СѓР¶Рµ РІС‹Р·С‹РІР°Р»Рё!")
     else:
-        print(f"{log[n]}, к доске!")
+        print(f"{log[n]}, Рє РґРѕСЃРєРµ!")
         b.add(log[n])
