@@ -5,6 +5,7 @@ import requests
 import json
 
 IGNORE_LESSONS = [5217]
+TARGET_LESSON = None
 BASE_PATH = Path("./")
 LESSON_NAME_BY_TYPE = {
     "classwork": "Классная работа",
@@ -56,13 +57,19 @@ session.cookies.set('Session_id',
 session.headers = {"accept": "application/json", "content-type": "application/json",
                    "accept-encoding": "gzip, deflate, br, zstd"}
 
-group_lessons_response = session.get(lesson_ids_url)
-validate_response(group_lessons_response, exit_on_fail=True)
-for group_lesson in json.loads(group_lessons_response.text):
-    lesson_id = group_lesson["id"]
-    if lesson_id in IGNORE_LESSONS:
-        continue
+lessons = []
+if TARGET_LESSON is None:
+    group_lessons_response = session.get(lesson_ids_url)
+    validate_response(group_lessons_response, exit_on_fail=True)
+    for group_lesson in json.loads(group_lessons_response.text):
+        lesson_id = group_lesson["id"]
+        if lesson_id in IGNORE_LESSONS:
+            continue
+        lessons.append(lesson_id)
+else:
+    lessons = [TARGET_LESSON]
 
+for lesson_id in lessons:
     response = session.get(get_lesson_url(lesson_id))
     validate_response(response, exit_on_fail=True)
 
