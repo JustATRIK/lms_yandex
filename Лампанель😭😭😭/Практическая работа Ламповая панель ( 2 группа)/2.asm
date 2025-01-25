@@ -1,0 +1,11 @@
+MOV AAAA, R0 ;
+MOV 5555, R1 ;
+OUT R0, P0 ;
+OUT R1, P1 ;
+OUT R0, P2 ;
+OUT R1, P3 ;
+OUT R0, P4 ;
+OUT R1, P5 ;
+OUT R0, P6 ;
+OUT R1, P7 ;
+STOP

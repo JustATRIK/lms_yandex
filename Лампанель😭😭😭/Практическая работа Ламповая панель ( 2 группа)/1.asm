@@ -1,0 +1,10 @@
+MOV 03C0, R0 ;
+OUT R0, P0 ;
+OUT R0, P1 ;
+OUT R0, P2 ;
+OUT R0, P3 ;
+OUT R0, P4 ;
+OUT R0, P5 ;
+OUT R0, P6 ;
+OUT R0, P7 ;
+STOP
