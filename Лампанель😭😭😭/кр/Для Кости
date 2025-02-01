@@ -1,0 +1,9 @@
+MOV 5, R0
+MOV 1, R1
+T:
+    MUL R0, R1
+    SUB 1, R0
+    CMP 0, R0
+    JNZ T
+MOV R1, R0
+STOP
