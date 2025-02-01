@@ -1,0 +1,24 @@
+MOV 0, R0
+MOV 13, R1
+MOV 13, R2
+MOV 18, R3
+PUSH R2
+PUSH R3
+CALL TEST
+POP R1
+CALL TEST
+POP R1
+CALL TEST
+STOP
+TEST:
+    MOV R1, R2
+    DIV 3, R1
+    MUL 3, R1
+    CMP R2, R1
+    JZ T
+    JNZ F
+    T:
+        ADD 1, R0
+        RET
+    F:
+        RET
