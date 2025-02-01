@@ -1,0 +1,28 @@
+В R1, R2, R3 записаны три целых числа. Найти количество нечетных чисел, больших 7, в исходном наборе.Результат записать в R0
+
+MOV 0, R0
+MOV 13, R1
+MOV 13, R2
+MOV 13, R3
+PUSH R2
+PUSH R3
+CALL TEST
+POP R1
+CALL TEST
+POP R1
+CALL TEST
+STOP
+TEST:
+    MOV R1, R2
+    SHR 1, R1
+    SHL 1, R1
+    CMP R2, R1
+    JNZ T
+    JZ F
+    T:
+        CMP 7, R1
+        JG F
+        ADD 1, R0
+        RET
+    F:
+        RET
