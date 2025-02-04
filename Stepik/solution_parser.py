@@ -6,7 +6,7 @@ import dotenv
 import requests
 from bs4 import BeautifulSoup
 
-TARGET_LESSONS = [13025]
+TARGET_LESSONS = [13026]
 BASE_PATH = Path("./")
 GROUP_ID = 5141
 

@@ -5,7 +5,7 @@ import requests
 import json
 
 IGNORE_LESSONS = [5217]
-TARGET_LESSON = None
+TARGET_LESSON = 5166
 BASE_PATH = Path("./")
 LESSON_NAME_BY_TYPE = {
     "classwork": "Классная работа",
