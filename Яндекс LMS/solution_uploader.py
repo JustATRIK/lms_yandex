@@ -42,7 +42,7 @@ for lesson_id in lessons:
     for lesson_type in json.loads(response.text):
         lesson = lesson_type["tasks"][0]["lesson"]
 
-        print(f"Found {len(lesson_type['tasks'])} problems in lesson {lesson_id}")
+        print(f"Found {len(lesson_type['tasks'])} problems in sub lesson of {lesson_id}")
         total_count = len(lesson_type['tasks'])
         for index, problem in enumerate(lesson_type["tasks"], start=1):
             problem_id = problem['id']
