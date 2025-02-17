@@ -1,6 +1,6 @@
 # Автозагрузка решений в Яндекс лицей
-1. Нужно скачать [a relative link](requirements.txt) и установить из него зависимости.
-2. Скачать файл [a relative link](Яндекс%20LMS/solution_uploader.py) - сам загрузчик решений.
+1. Нужно скачать [requirements.txt](requirements.txt) и установить из него зависимости.
+2. Скачать файл [solution_uploader.py](Яндекс%20LMS/solution_uploader.py) - сам загрузчик решений.
 3. В папке с solution_uploader.py нужно создать файл .env, в нем в двух строчках необходимо указать `Session_id` и `csrftoken`. Найти их можно в куки Яндекс лицея.
    Структура айла должна выглядить таким образом:
    ```
