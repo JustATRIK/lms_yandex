@@ -5,13 +5,14 @@ import requests
 import json
 
 IGNORE_LESSONS = [5217]
-TARGET_LESSON = 5166
+TARGET_LESSONS = [5166, 5168, 5169, 5218]
 BASE_PATH = Path("./")
 LESSON_NAME_BY_TYPE = {
     "classwork": "Классная работа",
     "homework": "Домашняя работа",
     "additional": "Доп задачи",
     "individual-work": "Контрольная работа",
+    "control-work": "Контрольная работа"
 }
 
 course_id = 957
@@ -52,13 +53,14 @@ def found_valid_solution(submissions):
 
 dotenv.load_dotenv()
 session = requests.Session()
+session.max_redirects = 1000
 session.cookies.set('Session_id',
                     os.getenv("session_id"))
 session.headers = {"accept": "application/json", "content-type": "application/json",
                    "accept-encoding": "gzip, deflate, br, zstd"}
 
 lessons = []
-if TARGET_LESSON is None:
+if not TARGET_LESSONS:
     group_lessons_response = session.get(lesson_ids_url)
     validate_response(group_lessons_response, exit_on_fail=True)
     for group_lesson in json.loads(group_lessons_response.text):
@@ -67,7 +69,7 @@ if TARGET_LESSON is None:
             continue
         lessons.append(lesson_id)
 else:
-    lessons = [TARGET_LESSON]
+    lessons = TARGET_LESSONS
 
 for lesson_id in lessons:
     response = session.get(get_lesson_url(lesson_id))
@@ -83,6 +85,7 @@ for lesson_id in lessons:
             task_id += 1
 
             problem_name = problem["title"]
+            problem_id = problem["id"]
             solution = problem["solution"]
             if solution is None:
                 continue
@@ -95,13 +98,21 @@ for lesson_id in lessons:
                 solution_file_url = solution_data["files"][0]["url"]
                 file_data = session.get(solution_file_url)
 
+                auto_upload_save_path = (BASE_PATH / "plain" / f"{problem_id}.py")
                 solution_save_path = (BASE_PATH / format_path_dir(lesson_name) / LESSON_NAME_BY_TYPE[lesson_type["type"]] /
                                       f"({task_id}) {format_path_dir(problem_name)}.py")
                 solution_save_path.parent.mkdir(exist_ok=True, parents=True)
                 if solution_save_path.exists():
                     os.remove(solution_save_path)
 
+                auto_upload_save_path.parent.mkdir(exist_ok=True, parents=True)
+                if auto_upload_save_path.exists():
+                    os.remove(auto_upload_save_path)
+
                 with open(solution_save_path, "a", encoding="utf-8") as file:
+                    file.write(file_data.text)
+                    file.flush()
+                with open(auto_upload_save_path, "a", encoding="utf-8") as file:
                     file.write(file_data.text)
                     file.flush()
                 print(f"Saved ({task_id}/{len(lesson_type['tasks'])}):", solution_save_path)
