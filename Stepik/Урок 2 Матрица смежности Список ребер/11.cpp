@@ -1,0 +1,1 @@
+{"code": "s = int(input())\nc1 = 0\nc2 = 0\nd = [[] for i in range(s)]\nfor i in range(s):\n    a = list(map(int, input().split()))\n    if sum(a) == 0:\n        c1 += 1\n    for j, v in enumerate(a):\n        d[j].append(v)\nfor i in d:\n    if sum(i) == 0:\n        c2 += 1\nprint(c2, c1)\n", "language": "python3"}
