@@ -6,7 +6,7 @@ import dotenv
 import requests
 from bs4 import BeautifulSoup
 
-TARGET_LESSONS = [13026]
+TARGET_LESSONS = [663330]
 BASE_PATH = Path("./")
 GROUP_ID = 5141
 
@@ -70,22 +70,23 @@ for lesson_id in TARGET_LESSONS:
         if len(problem_solutions_json["submissions"]) < 1:
             continue
 
-        code = ""
+        reply = None
         for solution in problem_solutions_json["submissions"]:
             if solution["status"] == "correct":
-                code = solution["reply"]["code"]
-        if code == "":
+                reply = solution["reply"]
+                break
+        if reply is None:
             continue
 
         problem_name = str(id_s)
 
-        solution_save_path = (BASE_PATH / format_path_dir(contest_name) / f"{id_s}.{SAVE_EXT}")
+        solution_save_path = (BASE_PATH / "plain" / f"{problem_id}.json")
         solution_save_path.parent.mkdir(exist_ok=True, parents=True)
         if solution_save_path.exists():
             os.remove(solution_save_path)
 
-        with open(solution_save_path, "a", encoding="utf-8") as file:
-            file.write(code)
+        with open(solution_save_path, "w", encoding="utf-8") as file:
+            json.dump(reply, file)
             file.flush()
         print(f"Saved ({id_s}/{len(problems)}):", solution_save_path)
 
