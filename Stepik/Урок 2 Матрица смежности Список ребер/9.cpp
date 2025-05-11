@@ -1,0 +1,1 @@
+{"code": "c = 0\nfor i in range(int(input())):\n    a = list(map(int, input().split()))\n    c += a.count(1)\nprint(c)\n", "language": "python3"}
