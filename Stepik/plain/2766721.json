@@ -1,0 +1,1 @@
+{"reply": {"code": "n, m = map(int, input().split())\nc = [0] * (n + 1)\n\nfor _ in range(m):\n    a, b = map(int, input().split())\n    c[a] += 1\n    c[b] += 1\n\nprint(len(set(c[1:])))", "language": "python3"}}

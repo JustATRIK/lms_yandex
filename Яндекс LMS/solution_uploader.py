@@ -71,3 +71,4 @@ for lesson_id in lessons:
             print(f"Problem {problem_id} ({index}/{total_count}): [{'=' * percentage}{'.' * (20 - percentage)}]", end='')
             print('\r', end='')
         print()
+        

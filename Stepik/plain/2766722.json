@@ -1,0 +1,1 @@
+{"reply": {"code": "from collections import defaultdict\n\nn, m = map(int, input().split())\nd = defaultdict(int)\n\nfor i in range(m):\n    a, b = map(int, input().split())\n    if a > b:\n        b, a = a, b\n    k = str(a) + str(b)\n    d[k] += 1\nprint(len(tuple(filter(lambda x: x > 1, d.values()))))\n", "language": "python3"}}

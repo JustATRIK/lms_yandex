@@ -1,1 +1,1 @@
-{"code": "s = int(input())\nb = []\nfor i in range(s):\n    b.append(list(map(lambda x: int(not int(x)), input().split())))\n    b[i][i] = 0\nfor i in b:\n    print(*i, \"\")\n\n\n\n", "language": "python3"}
+{"reply": {"code": "s = int(input())\nb = []\nfor i in range(s):\n    b.append(list(map(lambda x: int(not int(x)), input().split())))\n    b[i][i] = 0\nfor i in b:\n    print(*i, \"\")\n\n\n\n", "language": "python3"}}

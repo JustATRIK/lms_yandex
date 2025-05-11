@@ -1,0 +1,1 @@
+{"reply": {"code": "n, m = map(int, input().split())\nc = [0] * (n * n)\n\nfor _ in range(m):\n    a, b = map(int, input().split())\n    c[(a - 1) * n + b - 1] += 1\n    c[(b - 1) * n + a - 1] += 1\nprint(\"YES\" if c[1:].count(1) == len(c) - n else \"NO\")", "language": "python3"}}

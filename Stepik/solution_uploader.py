@@ -6,10 +6,15 @@ import dotenv
 import requests
 from bs4 import BeautifulSoup
 
-TARGET_LESSONS = [669829]
+TARGET_COURSE = 111246
+TARGET_LESSONS = [663330]
 BASE_PATH = Path("./")
 GROUP_ID = 5141
 
+SECTION_URL = f"https://stepik.org/api/sections/"
+UNIT_URL = f"https://stepik.org/api/units/?ids%5B%5D="
+COURSE_URL = f"https://stepik.org/api/courses/"
+ATTEMPT_URL = f"https://stepik.org/api/attempts?step=$solution_id&user=$user_id"
 GET_ATTEMPT_URL = f"https://stepik.org/api/attempts"
 SUBMIT_URL = f"https://stepik.org/api/submissions"
 SOLUTION_URL = f"https://raw.githubusercontent.com/JustATRIK/lms_yandex/master/Stepik/plain/$step_id.json"
@@ -24,12 +29,25 @@ def validate_response(response, exit_on_fail=False):
         return False
     return True
 
+
+def get_section_url(section):
+    return SECTION_URL + str(section)
+
+
+def get_course_url(course):
+    return COURSE_URL + str(course)
+
+
 def get_lesson_url(lesson_id):
     return LESSON_URL.replace("$lesson_id", str(lesson_id))
 
 
 def get_solution_url(step_id):
     return SOLUTION_URL.replace("$step_id", str(step_id))
+
+
+def get_attempt_url(solution_id, user_id):
+    return ATTEMPT_URL.replace("$solution_id", str(solution_id)).replace("$user_id", str(user_id))
 
 
 dotenv.load_dotenv()
@@ -43,6 +61,28 @@ session.cookies.set('sessionid', os.getenv("sessionid"))
 session.cookies.set('sessionid', os.getenv("sessionid"))
 session.cookies.set('csrftoken', csrf)
 user_id = os.getenv("user_id")
+
+if TARGET_COURSE is not None:
+    TARGET_LESSONS.clear()
+    response = session.get(get_course_url(TARGET_COURSE))
+    validate_response(response, exit_on_fail=True)
+
+    for section in json.loads(response.text)["courses"][0]["sections"]:
+        print(f"Processing {section} section")
+        section_response = session.get(get_section_url(section))
+        if not validate_response(section_response, exit_on_fail=False):
+            print("Skipping course")
+            continue
+
+        units_url = UNIT_URL + "&ids%5B%5D=".join(map(str, json.loads(section_response.text)["sections"][0]["units"]))
+        units_response = session.get(units_url)
+        if not validate_response(units_response, exit_on_fail=False):
+            print("Skipping course")
+
+        for unit in json.loads(units_response.text)["units"]:
+            TARGET_LESSONS.append(unit["lesson"])
+
+    print(f"Found {len(TARGET_LESSONS)} lessons in course")
 
 for lesson_id in TARGET_LESSONS:
     response = session.get(get_lesson_url(lesson_id))
@@ -76,13 +116,35 @@ for lesson_id in TARGET_LESSONS:
         attempt_data = json.loads(response.text)
         attempt_id = attempt_data["attempts"][0]["id"]
 
+        print(get_solution_url(problem_id))
         solution_response = session.get(get_solution_url(problem_id))
         if not validate_response(solution_response, exit_on_fail=False):
             print("Probably not solved yet. Skipping...")
             continue
 
-        solution = json.loads(solution_response.text)
-        print(f"Loaded solution {solution}")
+        solution_data = json.loads(solution_response.text)
+        print(f"Loaded solution data {solution_data}")
+        solution = solution_data["reply"]
+        if "dataset" in solution_data:
+            solution_by_choice = {solution_data["dataset"][i]: solution_data["reply"]["choices"][i] for i in range(len(solution_data["dataset"]))}
+            print(solution_by_choice)
+
+            problem_attempts = session.get(get_attempt_url(problem_id, user_id))
+            if not validate_response(problem_attempts, exit_on_fail=False):
+                continue
+
+            dataset = ""
+            for attempt in json.loads(problem_attempts.text)["attempts"]:
+                if attempt["id"] == attempt_id:
+                    dataset = attempt["dataset"]["options"]
+
+            if dataset == "":
+                print("Unable to load new dataset")
+                continue
+
+            choices = list(map(lambda x: solution_by_choice[x], dataset))
+            solution = {"choices": choices}
+            print(choices)
 
         response = session.post(SUBMIT_URL, json={"submission": {
             "attempt": str(attempt_id),

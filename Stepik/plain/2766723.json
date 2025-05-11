@@ -1,0 +1,1 @@
+{"reply": {"code": "from collections import defaultdict\n\ngraph = defaultdict(int)\nfor i in range(int(input().split()[1])):\n    a, b = map(int, input().split())\n    graph[a] += 1\n    graph[b] += 1\nprint(graph[int(input())])\n\n\n\n", "language": "python3"}}

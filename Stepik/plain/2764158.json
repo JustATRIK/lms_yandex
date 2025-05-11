@@ -1,1 +1,1 @@
-{"code": "a = [tuple(map(int, input().split())) for i in range(int(input().split()[1]))]\nind = int(input()) - 1\ns = a[ind]\nc = 0\nfor i, v in enumerate(a):\n    if i == ind:\n        continue\n    if v[0] in s or v[1] in s:\n        c += 1\nprint(c)", "language": "python3"}
+{"reply": {"code": "a = [tuple(map(int, input().split())) for i in range(int(input().split()[1]))]\nind = int(input()) - 1\ns = a[ind]\nc = 0\nfor i, v in enumerate(a):\n    if i == ind:\n        continue\n    if v[0] in s or v[1] in s:\n        c += 1\nprint(c)", "language": "python3"}}

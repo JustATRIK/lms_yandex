@@ -1,0 +1,1 @@
+{"reply": {"code": "for i in range(int(input())):\n    s = list(map(int, input().split()))[i:]\n    for j, v in enumerate(s):\n        if v == 1:\n            print(i + 1, j + i + 1)    ", "language": "python3"}}
