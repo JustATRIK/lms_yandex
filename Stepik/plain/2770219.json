@@ -1,0 +1,1 @@
+{"reply": {"code": "n, m = map(int, input().split())\ncounts = [0] * n\n\nfor i in range(m):\n    x, y = map(int, input().split())\n    counts[x - 1] += 1\n    counts[y - 1] += 1\n\nprint(\" \".join(map(str, counts)))\n", "language": "python3"}}

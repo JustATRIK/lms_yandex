@@ -1,0 +1,1 @@
+{"reply": {"code": "n = int(input())\nmatrix = [list(map(int, input().split())) for i in range(n)]\ncount = 0\ninput()\ncolors = list(map(int, input().split()))\nfor i in range(n):\n    for j in range(n):\n        if matrix[i][j] == 1 and colors[i] != colors[j]:\n            count += 1\nprint(count // 2)\n", "language": "python3.12"}}
