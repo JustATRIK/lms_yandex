@@ -4,7 +4,6 @@ from pathlib import Path
 
 import dotenv
 import requests
-from bs4 import BeautifulSoup
 
 TARGET_COURSE = 111246
 TARGET_LESSONS = [663330]
@@ -19,6 +18,7 @@ GET_ATTEMPT_URL = f"https://stepik.org/api/attempts"
 SUBMIT_URL = f"https://stepik.org/api/submissions"
 SOLUTION_URL = f"https://raw.githubusercontent.com/JustATRIK/lms_yandex/master/Stepik/plain/$step_id.json"
 LESSON_URL = f"https://stepik.org/api/lessons?ids%5B%5D=$lesson_id"
+SUBMISSION_URL = f"https://stepik.org/api/submissions?order=desc&step=$solution_id&user=$user_id"
 
 def validate_response(response, exit_on_fail=False):
     if response.status_code > 299 or response.status_code < 200:
@@ -49,6 +49,8 @@ def get_solution_url(step_id):
 def get_attempt_url(solution_id, user_id):
     return ATTEMPT_URL.replace("$solution_id", str(solution_id)).replace("$user_id", str(user_id))
 
+def get_submission_url(solution_id, user_id):
+    return SUBMISSION_URL.replace("$solution_id", str(solution_id)).replace("$user_id", str(user_id))
 
 dotenv.load_dotenv()
 
@@ -98,6 +100,21 @@ for lesson_id in TARGET_LESSONS:
     print(f"Found {len(problems)} problems in lesson {contest_name}")
 
     for problem_id in problems:
+        solved = False
+        problem_solutions = session.get(get_submission_url(problem_id, user_id))
+        print(f"Receiving from url {get_submission_url(problem_id, user_id)}")
+        if validate_response(problem_solutions, exit_on_fail=False):
+            problem_solutions_json = json.loads(problem_solutions.text)
+            for solution in problem_solutions_json["submissions"]:
+                if solution["status"] == "correct":
+                    reply = solution["reply"]
+                    solved = True
+                    break
+            if solved:
+                print("Already solved :D")
+                continue
+
+
         response = session.post(GET_ATTEMPT_URL, json={"attempt": {
             "dataset_url": None,
             "status": None,
@@ -125,6 +142,7 @@ for lesson_id in TARGET_LESSONS:
         solution_data = json.loads(solution_response.text)
         print(f"Loaded solution data {solution_data}")
         solution = solution_data["reply"]
+
         if "dataset" in solution_data:
             solution_by_choice = {solution_data["dataset"][i]: solution_data["reply"]["choices"][i] for i in range(len(solution_data["dataset"]))}
             print(solution_by_choice)
@@ -135,6 +153,7 @@ for lesson_id in TARGET_LESSONS:
 
             dataset = ""
             for attempt in json.loads(problem_attempts.text)["attempts"]:
+                print(attempt)
                 if attempt["id"] == attempt_id:
                     dataset = attempt["dataset"]["options"]
 
