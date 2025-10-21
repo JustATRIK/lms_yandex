@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\nprint(np.__version__)", "language": "python3"}}

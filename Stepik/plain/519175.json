@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\nZ = np.ones(tuple(map(int, input().split())))\nZ[1:-1,1:-1] = 0\n\n\n\n", "language": "python3"}}

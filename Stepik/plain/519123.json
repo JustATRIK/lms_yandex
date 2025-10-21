@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\nnp.random.seed(42)\nZ = np.random.random(tuple(map(int, input().split())))\nprint(Z.min())\nprint(Z.max())\n\n\n\n\n", "language": "python3"}}

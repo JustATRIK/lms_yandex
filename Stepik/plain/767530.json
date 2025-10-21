@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy\n\na = list(map(float, input().split(\", \")))\nV1 = numpy.array(a)\nV2 = numpy.array([a[-2]])\nV3 = numpy.array(a[::-1])\nV4 = numpy.array(a[::3])\nV5 = numpy.array(range(len(a)))", "language": "python3"}}

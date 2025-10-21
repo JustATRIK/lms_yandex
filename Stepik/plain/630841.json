@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\ndf = pd.DataFrame(data, index=labels)", "language": "python3"}}

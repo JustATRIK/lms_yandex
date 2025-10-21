@@ -1,0 +1,1 @@
+{"reply": {"code": "\n\nimport numpy as np\nnp.random.seed(42)\nvals = []\nZ = np.rot90(np.random.random(tuple(map(int, input().split()))))\nfor row in Z:\n    vals.append(row.mean())\nprint(min(vals))\nprint(max(vals))\n\n\n\n", "language": "python3"}}

@@ -6,8 +6,8 @@ import dotenv
 import requests
 from bs4 import BeautifulSoup
 
-TARGET_COURSE = 111246
-TARGET_LESSONS = [663332]
+TARGET_COURSE = 3356
+TARGET_LESSONS = [274304]
 BASE_PATH = Path("./")
 GROUP_ID = 5141
 
@@ -17,7 +17,7 @@ COURSE_URL = f"https://stepik.org/api/courses/"
 ATTEMPT_URL = f"https://stepik.org/api/attempts?step=$solution_id&user=$user_id"
 SOLUTION_URL = f"https://stepik.org/api/submissions?order=desc&step=$solution_id&user=$user_id"
 LESSON_URL = f"https://stepik.org/api/lessons?ids%5B%5D=$lesson_id"
-SAVE_EXT = "cpp"
+SAVE_EXT = "py"
 
 
 def validate_response(response, exit_on_fail=False):

@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nmu = np.mean(Y)\nsigma = np.std(Y)\nZ = np.around((Y - mu) / sigma, 2)", "language": "python3"}}

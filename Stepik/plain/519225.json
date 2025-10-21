@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nZ = np.pad(Z, pad_width=1, mode='constant', constant_values=0)", "language": "python3"}}
