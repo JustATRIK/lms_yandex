@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\ndf.loc[new_index] = new_data\ndf.drop(del_index, inplace=True)\n\nprint(df)", "language": "python3"}}

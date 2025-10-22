@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\ndf[column] = df[column].map({'yes': True, 'no': False, 1: True, 0: False})\nprint(df)", "language": "python3"}}

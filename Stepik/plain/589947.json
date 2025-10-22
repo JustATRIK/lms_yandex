@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\ntry:\n    Z = np.dot(A, B)\nexcept ValueError:\n    Z = \"\u0423\u043f\u0441! \u0427\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a...\"", "language": "python3"}}

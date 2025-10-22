@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\n\nAB = np.linalg.norm(A2 - A1)\nBC = np.linalg.norm(A3 - A2)\nCA = np.linalg.norm(A1 - A3)\ns = (AB + BC + CA) / 2\narea = np.sqrt(s * (s - AB) * (s - BC) * (s - CA))\nprint(\"{:.4f}\".format(area))", "language": "python3"}}

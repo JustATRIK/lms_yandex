@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nseed, n = int(input()), int(input())\nnp.random.seed(seed)\nZ = np.sort(np.random.rand(n))", "language": "python3"}}

@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\ndf['age'] = df['age'] + 1\nprint(df)", "language": "python3"}}

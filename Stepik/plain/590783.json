@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\ndef find_common_elements(A, B):\n    Z = np.intersect1d(A, B)\n    return np.sort(Z) if Z.size > 0 else np.array([])\n\nZ = find_common_elements(A, B)", "language": "python3"}}

@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nstart, stop, n = int(input()), int(input()), int(input())\nZ = np.round(np.geomspace(start, stop, n), 3)", "language": "python3"}}

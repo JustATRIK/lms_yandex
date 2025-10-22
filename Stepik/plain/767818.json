@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nv1_input = list(map(int, input().split(\", \")))\nv2_input = list(map(int, input().split(\", \")))\n\nV1 = np.array(v1_input)\nV2 = np.array(v2_input)\n\nV3 = V1 + V2\n\nV4 = np.array([V1[i] * V2[-(i+1)] for i in range(len(V1)) if i % 2 == 0])", "language": "python3"}}

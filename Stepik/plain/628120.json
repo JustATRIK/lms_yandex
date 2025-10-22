@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\ndef convert_to_float_array(V):\n    return np.array([float(x) for x in V], dtype=float)\n\nZ = convert_to_float_array(V)", "language": "python3"}}

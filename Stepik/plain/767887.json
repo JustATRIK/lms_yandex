@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\narr1 = np.array(list(map(int, input().split(','))))\narr2 = np.array(list(map(int, input().split(','))))\nif len(arr2) < 2:\n    V = np.array([])\nelse:\n    preds_chislo = arr2[-2]\n    V = arr1[arr1 % preds_chislo == 0] / preds_chislo", "language": "python3"}}

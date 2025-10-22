@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\ndef round_custom(arr):\n    return np.where(arr > 0, np.ceil(arr), np.floor(arr))\n\nZ = round_custom(A)", "language": "python3"}}

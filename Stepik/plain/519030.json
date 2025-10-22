@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nprint([item for item in Z.flatten() if item > 3])", "language": "python3"}}

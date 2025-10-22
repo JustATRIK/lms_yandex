@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nparts = input().split()\nshape = tuple(map(int, parts[:-1]))\nif parts[-1].isdigit():\n    dtype = np.float64\n    shape = shape + (int(parts[-1]),)\nelse:\n    dtype = parts[-1]\nZ = np.zeros(shape, dtype=dtype)", "language": "python3"}}

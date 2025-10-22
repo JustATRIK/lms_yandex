@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\ndf[column] = df[column].replace(old_value, new_value)\n\nprint(df)", "language": "python3"}}

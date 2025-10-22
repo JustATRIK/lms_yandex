@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\nn = int(input())\nm, k = map(int, input().split())\nZ = np.arange(n).reshape(m, k)\n", "language": "python3"}}

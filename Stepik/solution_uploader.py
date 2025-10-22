@@ -5,8 +5,8 @@ from pathlib import Path
 import dotenv
 import requests
 
-TARGET_COURSE = None
-TARGET_LESSONS = [670425]
+TARGET_COURSE = 3356
+TARGET_LESSONS = [274304]
 BASE_PATH = Path("./")
 GROUP_ID = 5141
 

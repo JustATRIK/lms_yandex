@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\nprint(df[df['age'] > critical_age])", "language": "python3"}}

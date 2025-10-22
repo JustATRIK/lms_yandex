@@ -1,0 +1,1 @@
+{"reply": {"code": "import numpy as np\n\n\nZ = np.dot(A, B)", "language": "python3"}}

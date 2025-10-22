@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\nprint(float(df['age'].count()))\nprint(df['age'].quantile(0.75))\n\n\n\n\n", "language": "python3"}}

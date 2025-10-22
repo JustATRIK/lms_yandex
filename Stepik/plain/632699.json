@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\nimport numpy as np\n\nfiltered_df = df[(df['age'] >= age_between[0]) & (df['age'] <= age_between[1])]\nprint(filtered_df)\n", "language": "python3"}}

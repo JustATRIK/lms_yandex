@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\nfor column in df.select_dtypes(include=['int64', 'float64']).columns:\n    print(f\"{column}:{df[column].sum()}\")", "language": "python3"}}

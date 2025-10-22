@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\nimport numpy as np\n\ndf.at[index, 'age'] += 1\nprint(df)", "language": "python3"}}

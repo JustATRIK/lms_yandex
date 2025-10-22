@@ -1,0 +1,1 @@
+{"reply": {"code": "import pandas as pd\n\nprint(df.groupby(group_by)['age'].mean())", "language": "python3"}}
