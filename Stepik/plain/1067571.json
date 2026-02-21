@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT author, title, price\nFROM book\nWHERE price < ANY (\n    SELECT MIN(price)\n    FROM book\n    GROUP BY author\n);"}}

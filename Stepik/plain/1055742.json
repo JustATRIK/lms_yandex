@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT title, author, price, amount\nFROM book\nWHERE (price < 500 OR price > 600) AND (price * amount >= 5000)\n\n\n\n\n"}}

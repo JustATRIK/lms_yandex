@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "UPDATE book, supply \nSET book.amount = book.amount + supply.amount, book.price = (book.price + supply.price) / 2\nWHERE book.title = supply.title AND book.author = supply.author;"}}

@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT title, author\nFROM book\nWHERE (title LIKE \"_% %\") AND (author LIKE \"%\u0421.%\")\nORDER BY title;\n\n\n\n\n"}}

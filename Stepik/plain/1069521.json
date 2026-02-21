@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "INSERT INTO book (title, author, price, amount)\nSELECT title, author, price, amount\nFROM supply\nWHERE author NOT IN (\n        SELECT author \n        FROM book\n      );"}}

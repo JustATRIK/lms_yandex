@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "DELETE FROM supply \nWHERE author IN (\n    SELECT author \n    FROM book \n    GROUP BY author \n    HAVING SUM(amount) > 10\n);"}}

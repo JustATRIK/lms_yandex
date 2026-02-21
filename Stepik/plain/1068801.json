@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT title, author, amount, \n       (SELECT MAX(amount) FROM book) - amount AS \u0417\u0430\u043a\u0430\u0437\nFROM book\nWHERE amount < (SELECT MAX(amount) FROM book);"}}

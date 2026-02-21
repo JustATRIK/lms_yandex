@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT name, city, per_diem, date_first, date_last\nFROM trip\nWHERE name LIKE '%\u0430 %'\nORDER BY date_last DESC;\n\n\n\n\n"}}

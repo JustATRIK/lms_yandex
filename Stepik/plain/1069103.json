@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "CREATE TABLE supply(\n    supply_id\tINT PRIMARY KEY AUTO_INCREMENT,\ntitle\tVARCHAR(50),\nauthor\tVARCHAR(30),\nprice\tDECIMAL(8, 2),\namount\tINT\n);\n\n\n\n\n"}}

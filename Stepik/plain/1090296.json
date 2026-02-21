@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "CREATE TABLE back_payment AS\nSELECT name, number_plate, violation, sum_fine, date_violation\nFROM fine\nWHERE date_payment IS NULL;"}}

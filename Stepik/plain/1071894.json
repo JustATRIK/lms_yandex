@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "UPDATE book \nSET price = 0.9 * price \nWHERE amount BETWEEN 5 AND 10;"}}

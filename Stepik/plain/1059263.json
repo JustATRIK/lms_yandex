@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT author, title\nFROM book\nWHERE amount BETWEEN 2 AND 14\nORDER BY author DESC, title;\n\n\n\n\n"}}

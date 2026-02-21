@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT author, title, price \nFROM book\nWHERE ABS(price - (SELECT MIN(price) FROM book)) <= 150\nORDER BY price;\n\n\n\n\n"}}

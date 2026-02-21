@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT name, city, date_first, date_last\nFROM trip\nWHERE DATEDIFF(date_last, date_first) = (\n    SELECT MIN(DATEDIFF(date_last, date_first))\n    FROM trip\n);"}}

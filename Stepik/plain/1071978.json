@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "UPDATE book \nSET buy = IF(buy > amount, amount, buy),\n    price = IF(buy = 0, price * 0.9, price);\n\nSELECT * FROM book;"}}

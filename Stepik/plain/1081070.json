@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT city, COUNT(*) AS \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e\nFROM trip\nGROUP BY city\nORDER BY city;"}}

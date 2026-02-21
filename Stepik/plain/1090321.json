@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "DELETE FROM fine\nWHERE date_violation < '2020-02-01'"}}

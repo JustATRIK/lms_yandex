@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "CREATE TABLE fine (\n    fine_id INT PRIMARY KEY AUTO_INCREMENT,\n    name VARCHAR(30),\n    number_plate VARCHAR(6),\n    violation VARCHAR(50),\n    sum_fine DECIMAL(8,2),\n    date_violation DATE,\n    date_payment DATE\n);"}}

@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "CREATE TABLE book(\n    book_id INT PRIMARY KEY AUTO_INCREMENT,\n    title VARCHAR(50),\n    author VARCHAR(30),\n    price DECIMAL(8, 2),\n    amount INT\n);\n\n\n\n\n"}}

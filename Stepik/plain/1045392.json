@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT title, author, amount,\n    ROUND((price-(price/100*30)),2) AS new_price \nFROM book;\n\n\n\n\n"}}

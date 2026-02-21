@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT title, author\nFROM book\nWHERE (price BETWEEN 540.50 AND 800) AND amount IN (2, 3, 5, 7)\n\n\n\n\n"}}

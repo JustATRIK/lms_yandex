@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "INSERT INTO book (book_id, title, author, price, amount)\nVALUES (1, '\u041c\u0430\u0441\u0442\u0435\u0440 \u0438 \u041c\u0430\u0440\u0433\u0430\u0440\u0438\u0442\u0430', '\u0411\u0443\u043b\u0433\u0430\u043a\u043e\u0432 \u041c.\u0410.', 670.99, 3)\n\n\n\n\n"}}

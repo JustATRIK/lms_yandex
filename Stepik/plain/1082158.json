@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "UPDATE fine f, traffic_violation tv\nSET f.sum_fine = tv.sum_fine\nWHERE f.violation = tv.violation AND f.sum_fine IS NULL;"}}

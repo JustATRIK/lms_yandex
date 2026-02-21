@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT name, city, date_first, date_last\nFROM trip\nWHERE MONTH(date_first) = MONTH(date_last)\nORDER BY city, name;"}}

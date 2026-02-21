@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT author, title, amount\nFROM book\nWHERE amount IN (\n        SELECT amount \n        FROM book \n        GROUP BY amount \n        HAVING COUNT(amount) = 1\n      )\nORDER BY amount;\n\n\n\n\n"}}

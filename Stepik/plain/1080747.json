@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT name, city, date_first, per_diem * (DATEDIFF(date_last, date_first) + 1) AS \u0421\u0443\u043c\u043c\u0430\nFROM trip\nWHERE MONTH(date_first) IN (2, 3) AND YEAR(date_first) = 2020\nORDER BY name, \u0421\u0443\u043c\u043c\u0430 DESC;"}}

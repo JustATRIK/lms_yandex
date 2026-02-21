@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT author, title, price\nFROM book\nWHERE amount < 10;\n\n\n\n\n"}}

@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT name, SUM((DATEDIFF(date_last, date_first) + 1) * per_diem) AS \u0421\u0443\u043c\u043c\u0430\nFROM trip\nGROUP BY name\nHAVING COUNT(name) > 3\nORDER BY \u0421\u0443\u043c\u043c\u0430 DESC;"}}

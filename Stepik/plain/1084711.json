@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "UPDATE fine, payment\nSET fine.date_payment = payment.date_payment,\n    fine.sum_fine = IF(DATEDIFF(payment.date_payment, fine.date_violation) <= 20, fine.sum_fine / 2, fine.sum_fine)\nWHERE fine.name = payment.name\n    AND fine.number_plate = payment.number_plate\n    AND fine.violation = payment.violation\n    AND fine.date_payment IS NULL;"}}

@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "SELECT title, amount, \n     1.65 * amount AS pack \nFROM book;\n\n\n\n\n"}}

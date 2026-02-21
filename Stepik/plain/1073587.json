@@ -1,0 +1,1 @@
+{"reply": {"solve_sql": "CREATE TABLE ordering AS\nSELECT author, title, \n   (\n    SELECT ROUND(AVG(amount)) \n    FROM book\n   ) AS amount\nFROM book\nWHERE amount < (SELECT AVG(amount) FROM book);"}}
